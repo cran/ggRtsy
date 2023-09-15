@@ -1,0 +1,104 @@
+---
+title: "ggRtsy"
+author: "Katelyn Diaz, Tess Goldmann, Silas Weden"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ggRtsy}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 6
+)
+
+library(dplyr)
+library(ggplot2)
+library(ggRtsy)
+library(purrr)
+
+exampleData <- starwars %>%
+ filter(mass < 1000)
+plotExample <-  ggplot(exampleData, aes(x = height, y = mass)) +
+  geom_point(size = 3) +
+  scale_x_continuous()
+```
+
+## goghColors
+
+The `ggArtsyR()` package works with `ggplot2()` to add an additional color palette to the user’s repertoire. This is the goghColors dataset, which contains the RGB and hex codes of colors picked from Van Gogh paintings.
+
+```{r}
+knitr::kable(head(goghColors,10))
+```
+
+## RectangleFiller()
+
+ggRtsy also has a function that work alongside `ggplot2()` to create more interesting data visualizations and add contextual information to the user’s plots. This main function is `RectangleFiller()`, which divides data visualizations into a specified number of colored quadrants based on the number of input colors, improving the readability of graphs.
+
+Using Hex Codes from the dataset `goghColors`, three colors were added on top of a `ggplot` sample scatter plot. Based on the plot, the function automatically calculated three equal widths of the rectangles, and stretched them to upper and lower bounds on the y-axis. 
+
+```{r}
+RectangleFiller(plotExample, c("#e32636", "#9966cc", "#f4c2c2", "#e16827"))
+```
+
+## rgbToHex()
+
+This package comes with rgbToHex, converting rgb colors into hex code colors.
+
+```{r}
+rgbToHex(c("(225, 104, 39)","(60, 90, 202)"))
+```
+
+## Gogh Painting Sets
+
+The dataset goghPaintingSets contains a list of every Gogh painting, some information about them, and a set of colors randomly pulled from it. This can be used to make your own Gogh themed colorsets.
+
+```{r}
+knitr::kable(head(goghPaintingSets,4))
+```
+
+
+## gogh_palettes_pop
+
+For ease of use, gogh_palettes_pop is a list of color palettes from the most well known Gogh paintings.
+
+`cafeTerrace` = '#2A6BBF', '#3F6CA6', '#F2C84B', '#D99036', '#BF6734'
+![](https://uploads2.wikiart.org/images/vincent-van-gogh/cafe-terrace-place-du-forum-arles-1888(1).jpg!Large.jpg){width=200px}
+
+### The palettes can be used in graphs as follows:
+
+
+#### `scale_color_gogh` Continuous
+
+```{r}
+plotExample2 <- ggplot(exampleData, aes(x = height, y = mass, color = birth_year)) +
+  geom_point(size = 2) +
+  scale_color_gogh(palette = "cafeTerrace", discrete = FALSE) +
+  theme_minimal()
+plotExample2
+```
+
+#### `scale_color_gogh` Discrete
+
+```{r, warning=FALSE, message=FALSE}
+ggplot(storms, aes(x = hour, y = wind, color = status)) +
+  geom_point(size = 3) +
+  scale_color_gogh(palette = "wheatField", discrete = TRUE, reverse=FALSE) +
+  theme_minimal()
+```
+
+#### `scale_fill_gogh` Discrete
+
+```{r, warning=FALSE, message=FALSE}
+ggplot(storms, aes(x = category, fill = status)) +
+  geom_bar() +
+  scale_fill_gogh(palette = "almondBlossoms", discrete = TRUE, reverse=FALSE) +
+  theme_minimal()
+```
