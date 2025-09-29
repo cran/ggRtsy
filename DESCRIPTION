@@ -1,7 +1,7 @@
 Package: ggRtsy
 Type: Package
 Title: Add Some Van Gogh Colors and Overlay Colors on Your 'ggplot()'
-Version: 0.1.0
+Version: 1.2.1
 Authors@R: c(
   person("Katelyn", "Diaz", email = "katndiaz@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-6108-1682")),
   person("Silas", "Weden", email = "sweden@smith.edu", role = "aut"),
@@ -22,11 +22,13 @@ Suggests: rmarkdown, knitr, testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2023-09-14 16:34:54 UTC; katelyndiaz
-Author: Katelyn Diaz [aut, cre] (<https://orcid.org/0000-0001-6108-1682>),
+Packaged: 2025-09-29 19:59:02 UTC; katelyndiaz
+Author: Katelyn Diaz [aut, cre] (ORCID:
+    <https://orcid.org/0000-0001-6108-1682>),
   Silas Weden [aut],
   Tess Goldmann [aut],
-  Aushanae Haller [edt] (<https://orcid.org/0000-0002-2090-1952>),
-  Kathleen Hablutzel [edt] (<https://orcid.org/0000-0002-7802-6353>)
+  Aushanae Haller [edt] (ORCID: <https://orcid.org/0000-0002-2090-1952>),
+  Kathleen Hablutzel [edt] (ORCID:
+    <https://orcid.org/0000-0002-7802-6353>)
 Repository: CRAN
-Date/Publication: 2023-09-15 19:12:05 UTC
+Date/Publication: 2025-09-29 20:20:08 UTC

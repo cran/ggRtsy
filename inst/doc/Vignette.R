@@ -37,13 +37,13 @@ plotExample2 <- ggplot(exampleData, aes(x = height, y = mass, color = birth_year
   theme_minimal()
 plotExample2
 
-## ---- warning=FALSE, message=FALSE--------------------------------------------
+## ----warning=FALSE, message=FALSE---------------------------------------------
 ggplot(storms, aes(x = hour, y = wind, color = status)) +
   geom_point(size = 3) +
   scale_color_gogh(palette = "wheatField", discrete = TRUE, reverse=FALSE) +
   theme_minimal()
 
-## ---- warning=FALSE, message=FALSE--------------------------------------------
+## ----warning=FALSE, message=FALSE---------------------------------------------
 ggplot(storms, aes(x = category, fill = status)) +
   geom_bar() +
   scale_fill_gogh(palette = "almondBlossoms", discrete = TRUE, reverse=FALSE) +
